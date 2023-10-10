@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic Tac Toe</title>
+</head>
+   <style>
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    body{
+        background-color: #10031b;
+        color: orange;
+    }
+    .container{
+
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        text-align: center;
+    }
+    #gameBoard{
+         width: 500px;
+         height: 450px;
+         display: flex;
+         flex-wrap: wrap; 
+        border: 2px solid orange;
+        border-radius: 10px;
+    }
+    #gameBoard .box{
+       width: 150px;
+       height: 150px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-grow: 1;
+        font-size: 100px;
+        font-family: sans-serif;
+        color: orange;
+        border: 1px solid ;
+        cursor: pointer;
+    }
+
+    h1{
+        margin-bottom: 20px;
+        font-size: 30px;
+        font-family: sans-serif;
+    }
+    button{
+        padding: 8px 30px;
+        border: none;
+        background-color: rgb(137, 36, 36);
+        color: #fff;
+        font-size: 17px;
+        border-radius: 8px;
+        margin-bottom: 30px;
+        cursor: pointer;
+    }
+    
+   </style>
+<body>
+     <div class="container">
+         <h1 id="playerText">Tic Tac Toe</h1>
+         <button id="restartBtn">Restart</button>
+
+          <div id="gameBoard">
+            <div class="box" id="0"></div>
+            <div class="box" id="1"></div>
+            <div class="box" id="2"></div>
+            <div class="box" id="3"></div>
+            <div class="box" id="4"></div>
+            <div class="box" id="5"></div>
+            <div class="box" id="6"></div>
+            <div class="box" id="7"></div>
+            <div class="box" id="8"></div>
+          </div>
+     </div>
+
+     <script>
+        const playerText = document.querySelector('#playerText');
+const restartBtn = document.querySelector('#restartBtn');
+const allBox = Array.from(document.querySelectorAll('.box'));
+
+// Clear game board logic
+restartBtn.addEventListener('click', () => {
+  allBox.forEach((box) => {
+    box.textContent = '';
+  });
+  currentPlayer = player_X;
+  pos = Array(9).fill(null);
+  playerText.textContent = 'Tic Tac Toe';
+});
+
+// Player choice logic
+let player_X = 'X';
+let player_O = 'O';
+let currentPlayer = player_X;
+let pos = Array(9).fill(null);
+
+
+allBox.forEach((box) => {
+  box.addEventListener('click', () => {
+    const id = box.id;
+    if (!pos[id] && !plyerWon()) {
+      box.textContent = currentPlayer;
+      pos[id] = currentPlayer;
+      currentPlayer = currentPlayer === player_X ? player_O : player_X;
+    }
+    let win = plyerWon();
+    if (win) {
+      playerText.textContent = `${win} is won`;
+    }
+  });
+});
+
+function plyerWon() {
+  // Winning combinations
+  const winCombinations = [
+    [0, 1, 2],
+    [0, 3, 6],
+    [6, 7, 8],
+    [2, 5, 8],
+    [3, 4, 5],
+    [0, 4, 8],
+    [2, 4, 6],
+  ];
+
+  for (const [a, b, c] of winCombinations) {
+    if (pos[a] && pos[a] === pos[b] && pos[b] === pos[c]) {
+      return pos[a];
+    }
+  }
+
+  
+  return null;
+}
+ 
+     </script>
+</body>
+</html>
