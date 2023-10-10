@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>password generator</title>
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            overflow: hidden;
+            font-family: sans-serif;
+            background-color: #2c3e50;
+        }
+        .heading{
+            filter: blur(0.5px );
+            text-shadow: 2px 4px 10px #207df0;
+        }
+        #copyBtn:hover{
+            background-color: #006be6;
+            transition: all ease 0.3s;
+            color: #fff;
+        }
+
+        .container {
+            border: 3px solid rgb(129, 129, 129);
+            padding: 20px 10px;
+            width: 500px;
+            height: auto;
+            text-align: center;
+            border-radius: 9px;
+            color: #fff;
+            background-color: #222f3e;
+        }
+
+        .second-box {
+            margin-top: 50px;
+            display: flex;
+            align-items: start;
+            justify-content: space-around;
+            font-size: 18px;
+        }
+
+        .first-box {
+            margin-top: ;
+            margin: 40px auto;
+            display: flex;
+            align-items: center;
+            height: 45px;
+            width: 90%;
+
+        }
+
+        .first-box input {
+            height: 100%;
+            width: 100%;
+            border-top-left-radius: 5px;
+            border-bottom-left-radius: 5px;
+             padding-left: 10px;
+            background-color: transparent;
+            background-color: #2c3e50;
+            border: none;
+            outline: none;
+            font-size: 17px;
+            font-style: normal;
+            color: #fff;
+        }
+
+        .first-box button {
+            padding: 0px 10px;
+            border-top-right-radius: 5px;
+            border-bottom-right-radius: 5px;
+            height: 100%;
+            font-weight: bold;
+            border: none;
+            outline: none;
+            cursor: pointer;
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div>
+            <h1 class="heading">Password <span style="color:#006be6 ;">Generator</span></h1>
+        </div>
+        <div class="first-box"><input type="text" placeholder="password" id="passwordInput">
+         <button id="copyBtn">Copy</button>
+        </div>
+
+        <div class="second-box">
+            <div>
+                <input type="range" min="8" max="50" id="range">
+                <div><label for="">Length <span id="length">8</span></label></div>
+            </div>
+            <div>
+                <input type="checkbox" id="checkNumber">
+                <label for="">Number</label>
+            </div>
+            <div>
+                <input type="checkbox" id="checkChar">
+                <label for="">Character</label>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
